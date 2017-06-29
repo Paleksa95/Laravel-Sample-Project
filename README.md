@@ -1,0 +1,16 @@
+# Laravel-Sample-Project
+
+Hello , this is my first project made in Laravel framework.
+
+I tried to incorporate a lot of stuff in it like:
+
+Modification of Laravel auth ( custom ACL ),CRUD,Only admin can edit users and give them roles,message approval by moderator,pagination,
+policies usage,e-mail verification,differen type of relations,different type of users,users can do different stuff based on their role and 
+message count.. and much more...
+
+In future i am planing to add few other options like: Only user can update/edit his own message/thread, moderator can add update/edit any
+message/thread,Maybe I will add more different roles.
+
+Also i will update and edit front end to look more nice.
+
+If you have any questions and suggestions or if you want me to add some other features send me an e-mail: paleksa95@gmail
