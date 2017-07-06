@@ -25,7 +25,7 @@
 
                         <div class="form-group">
                             <label name="body">Message body:</label>
-                        <textarea id="body" name="body" value="{{$message->body}}" class="form-control"
+                        <textarea id="body" name="body"  class="form-control"
                                  >{{$message->body}}</textarea>
                         </div>
                         {{ csrf_field() }}
