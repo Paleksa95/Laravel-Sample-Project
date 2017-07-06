@@ -86,7 +86,13 @@ class MessageController extends Controller {
         return redirect()->back()->with('verify', 'Message approved!');
     }
 
-
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * Get message that you want to edit
+     *
+     */
     public function getMessage($id) {
 
         $message = Message::find($id);

@@ -37,9 +37,10 @@ Route::get('thread/display/{id}', 'ThreadController@displayOneThread')->name('vi
 
 //Message routes
 Route::post('message/create', 'MessageController@submitMessage')->name('submitMessage')->middleware('auth');
-Route::get('/message/edit/{id}', 'MessageController@getMessage');
-Route::post('/message/edit', 'MessageController@editMessage')->name('editMessage');
-
+Route::prefix('/message/edit')->group(function () {
+Route::get('/{id}', 'MessageController@getMessage');
+Route::post('/edit', 'MessageController@editMessage')->name('editMessage');
+});
 
 Route::middleware(['can:approve,App\Message'])->prefix('message/approve')->group(function () {
 
