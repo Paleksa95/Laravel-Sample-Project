@@ -62,9 +62,9 @@ class MessageController extends Controller {
      * Display all messages for approval.
      *
      */
-    public function DisplayAllNotApprovedMessages(){
+    public function DisplayAllNotApprovedMessages() {
 
-        $messages = Message::all()->where('approved', '=' , 0);
+        $messages = Message::all()->where('approved', '=', 0);
 
         return view('pages.messages.messagesThatNeedApprove', ['messages' => $messages]);
 
@@ -77,7 +77,7 @@ class MessageController extends Controller {
      * Approve message
      *
      */
-    public function approveMessage(Request $request){
+    public function approveMessage(Request $request) {
 
         $this->authorize('approve', Message::class);
 
@@ -87,8 +87,11 @@ class MessageController extends Controller {
     }
 
 
+    public function getMessage($id) {
 
+        $message = Message::find($id);
 
+        return view('pages.messages.editMessage', ['message' => $message]);
 
-
+    }
 }
