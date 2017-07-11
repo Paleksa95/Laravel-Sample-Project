@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;

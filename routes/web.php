@@ -11,18 +11,10 @@
 |
 */
 
-use App\Message;
-
-
-
-
-
-
 //Index route.
 Route::get('/', function () {
     return view('pages.index');
 })->name('startingPage');
-
 
 //Thread routes.
 Route::middleware(['can:post,App\Thread'])->prefix('thread/create')->group(function () {
@@ -59,7 +51,6 @@ Route::middleware(['admin'])->prefix('users')->group(function () {
     Route::post('/update','UserController@updateUser')->name('updateUser');
 
 });
-
 
 //Registration and verifying e-mails.
 Route::get('verifyEmail', 'Auth\RegisterController@verifyEmail')->name('verify');

@@ -20,13 +20,13 @@ class MessagePolicy {
     }
 
     /**
+     * @param User $user
      * @return bool
      *
      * Only users with moderator role can approve messages.
-     *
      */
-    public function approve() {
-        return \Auth::user()->checkRole('role_moderator');
+    public function approve(User $user) {
+        return $user->checkRole('role_moderator');
     }
 
     /**
