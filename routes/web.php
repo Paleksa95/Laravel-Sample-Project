@@ -17,7 +17,7 @@ Route::get('/', function () {
 })->name('startingPage');
 
 //Thread routes.
-Route::middleware(['can:post,App\Thread'])->prefix('thread/create')->group(function () {
+Route::prefix('thread/create')->group(function () {
 
 Route::get('/', 'ThreadController@displayForm');
 Route::post('/', 'ThreadController@submitThread')->name('submitThread');

@@ -16,7 +16,7 @@ class ThreadController extends Controller {
      * Displaying form to subbmit thread.
      */
     public function displayForm() {
-
+        $this->authorize('post', Thread::class);
         return view('pages.thread.createThread');
     }
 

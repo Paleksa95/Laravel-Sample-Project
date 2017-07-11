@@ -22,13 +22,14 @@ class ThreadPolicy {
 
 
     /**
+     * @param User $user
      * @return bool
      *
-     *  If current user have more than 5 approved messages on site we return true else it is false.
+     * If current user have more than 5 approved messages on site we return true else it is false.
      */
-    public function post() {
+    public function post(User $user) {
 
-       return \Auth::user()->message()->where('approved', '=', 1)->count() >= 5;
+       return $user->message()->where('approved', '=', 1)->count() >= 5;
 
     }
 
