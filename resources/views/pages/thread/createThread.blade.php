@@ -15,7 +15,7 @@
                 <form action="{{ route('submitThread') }}" method="POST">
                     <div class="form-group">
                         <label name="title">Title:</label>
-                        <input id="email" name="title" class="form-control" placeholder="Enter title here..">
+                        <input id="title" name="title" class="form-control" placeholder="Enter title here..">
                     </div>
 
                     <div class="form-group">

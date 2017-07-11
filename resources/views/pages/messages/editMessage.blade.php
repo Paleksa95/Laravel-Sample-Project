@@ -28,6 +28,8 @@
                         <textarea id="body" name="body"  class="form-control"
                                  >{{$message->body}}</textarea>
                         </div>
+                        <input type="hidden" name="id" value="{{ $message->id }}">
+
                         {{ csrf_field() }}
                         <input type="submit" value="Update Message" class="btn btn-lg btn-primary btn-bloc">
                     </div>

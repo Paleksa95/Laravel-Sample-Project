@@ -11,7 +11,7 @@
 |
 */
 
-
+use App\Message;
 
 
 
@@ -31,19 +31,22 @@ Route::get('/', 'ThreadController@displayForm');
 Route::post('/', 'ThreadController@submitThread')->name('submitThread');
 
 });
-Route::get('thread/display', 'ThreadController@displayAllThreads');
-Route::get('thread/display/{id}', 'ThreadController@displayOneThread')->name('viewThread');
-
+Route::prefix('/thread')->group(function () {
+Route::get('/display', 'ThreadController@displayAllThreads');
+Route::get('/display/{id}', 'ThreadController@displayOneThread')->name('viewThread');
+Route::get('/edit/{id}', 'ThreadController@getThread');
+Route::post('/edit/', 'ThreadController@editThread')->name('editThread');
+});
 
 //Message routes
 Route::post('message/create', 'MessageController@submitMessage')->name('submitMessage')->middleware('auth');
+
 Route::prefix('/message/edit')->group(function () {
 Route::get('/{id}', 'MessageController@getMessage');
-Route::post('/edit', 'MessageController@editMessage')->name('editMessage');
+Route::post('','MessageController@editMessage')->name('editMessage');
 });
 
 Route::middleware(['can:approve,App\Message'])->prefix('message/approve')->group(function () {
-
 Route::get('/', 'MessageController@DisplayAllNotApprovedMessages');
 Route::post('/', 'MessageController@approveMessage')->name('approveMessage');
 });

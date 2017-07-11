@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller {
 
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      *
@@ -49,10 +48,9 @@ class ThreadController extends Controller {
         $thread->user()->associate($user);
         $thread->save();
 
-        return redirect()->back()->with('verify', 'Message created!');
+        return redirect()->back()->with('verify', 'Thread created!');
 
     }
-
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -89,5 +87,48 @@ class ThreadController extends Controller {
         ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * Get thread that you want to edit
+     */
+    public function getThread($id) {
+
+        $thread = Thread::find($id);
+
+        $this->authorize('update', $thread);
+
+        return view('pages.thread.editThread', ['thread' => $thread]);
+
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * Update thread.Only thread owner or user with moderator role can do this.
+     */
+    public function editThread(Request $request) {
+
+        //Get thread by id.
+        $thread = Thread::find($request->id);
+
+        $this->authorize('update', $thread);
+
+        //Validation
+        $this->validate($request, [
+            'title' => 'required|max:255|min:5',
+            'body' => 'required|max:255|min:5',
+        ]);
+
+        //Updating
+        Thread::where('id', $request->id)->update(['title' => $request->title,
+                                                   'body' => $request->body
+                                                   ]);
+
+        return redirect()->back()->with('verify', 'Update was successfully!');
+
+    }
 
 }

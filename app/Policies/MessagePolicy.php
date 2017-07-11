@@ -3,10 +3,11 @@
 namespace App\Policies;
 
 use App\User;
+use App\Message;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
-class MessagePolicy
-{
+class MessagePolicy {
     use HandlesAuthorization;
 
     /**
@@ -14,19 +15,32 @@ class MessagePolicy
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         //
     }
 
-    public function approve(){
-//        $user = \Auth::user();
+    /**
+     * @return bool
+     *
+     * Only users with moderator role can approve messages.
+     *
+     */
+    public function approve() {
         return \Auth::user()->checkRole('role_moderator');
-
     }
 
-
-
+    /**
+     * @param User $user
+     * @param Message $message
+     * @return bool
+     *
+     * update message only user is moderator or if user created message.
+     *
+     */
+    public function update(User $user ,Message $message) {
+      //  dd($user->id , $message->user_id);
+        return $user->id === $message->user_id || $user->checkRole('role_moderator');
+    }
 
 
 }
