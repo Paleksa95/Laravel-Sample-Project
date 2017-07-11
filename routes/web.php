@@ -38,7 +38,7 @@ Route::get('/{id}', 'MessageController@getMessage');
 Route::post('','MessageController@editMessage')->name('editMessage');
 });
 
-Route::middleware(['can:approve,App\Message'])->prefix('message/approve')->group(function () {
+Route::prefix('message/approve')->group(function () {
 Route::get('/', 'MessageController@DisplayAllNotApprovedMessages');
 Route::post('/', 'MessageController@approveMessage')->name('approveMessage');
 });

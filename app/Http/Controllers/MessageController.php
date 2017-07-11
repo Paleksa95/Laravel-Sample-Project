@@ -63,6 +63,8 @@ class MessageController extends Controller {
      */
     public function DisplayAllNotApprovedMessages() {
 
+        $this->authorize('approve', Message::class);
+
         $messages = Message::all()->where('approved', '=', 0);
 
         return view('pages.messages.messagesThatNeedApprove', ['messages' => $messages]);
