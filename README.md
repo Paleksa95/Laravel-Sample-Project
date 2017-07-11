@@ -9,7 +9,9 @@ policies usage,e-mail verification,differen type of relations,different type of 
 message count.. and much more...
 
 In future i am planing to add few other options like: Only user can update/edit his own message/thread, moderator can add update/edit any
-message/thread,Maybe I will add more different roles.
+message/thread,Maybe I will add more different roles. ( DONE )
+
+In next update , i will add search option , make front end better and add profile pictures.
 
 Also i will update and edit front end to look more nice.
 
