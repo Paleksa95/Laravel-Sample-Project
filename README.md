@@ -13,4 +13,4 @@ message/thread,Maybe I will add more different roles. ( DONE )
 
 In next update , i will add search option , make front end better and add profile pictures.
 
-If you have any questions and suggestions or if you want me to add some other features send me an e-mail: paleksa95@gmail
+
